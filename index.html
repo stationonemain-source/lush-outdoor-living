@@ -236,6 +236,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 @media (max-width:560px){.brief dl{grid-template-columns:1fr}}
 .consent{font-size:13px;color:var(--ink-3);margin:6px 0 0}
 </style>
+
 <style id="chat-css">
 /* Ask the studio: AI chat. Quiet launcher, a panel in the site's own greens, answers only from the studio's facts. */
 .chat-launch{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 14px;border-radius:999px;border:0;background:var(--deep);color:#fff;font:600 15px/1 var(--sans);cursor:pointer;box-shadow:0 10px 28px rgba(20,32,24,.28);transition:transform .2s,background .2s}
@@ -268,7 +269,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 .chat-form button{min-height:46px;padding:0 16px;border:0;background:var(--deep);color:#fff;font:600 14px/1 var(--sans);cursor:pointer}
 .chat-form button[disabled]{opacity:.5;cursor:default}
 .chat-acts{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;font-size:12.5px;color:var(--ink-3)}
-.chat-acts a{font:600 13px/1 var(--sans);color:var(--deep)}
+.chat-acts a{font:600 13px/1 var(--sans);color:var(--deep);white-space:nowrap}
 @media (max-width:560px){.chat{right:0;left:0;bottom:0;width:100%;height:88vh;border-left:0;border-right:0}.chat-launch span.l{display:none}.chat-launch{padding:0 16px}}
 @media (prefers-reduced-motion:reduce){.msg.typing i{animation:none}}
 </style>
@@ -591,6 +592,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 })();
 </script>
 <!-- chat:start -->
+<aside aria-label="Ask the studio chat">
 <button class="chat-launch" id="chatLaunch" type="button" aria-controls="chat" aria-expanded="false"><span class="amp" aria-hidden="true">&amp;</span><span class="l">Ask the studio</span><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (AI assistant)</span></button>
 <section class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chatTitle" hidden>
   <div class="chat-head"><span class="amp" aria-hidden="true">&amp;</span><div><b id="chatTitle">Ask the studio</b><small>AI assistant for Lush Outdoor Living</small></div><button class="chat-x" id="chatClose" type="button" aria-label="Close chat">&times;</button></div>
@@ -600,6 +602,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
     <div class="chat-acts"><span>AI can be wrong. The studio confirms everything.</span><a href="#start" id="chatPlan">Plan your yard</a></div>
   </div>
 </section>
+</aside>
 <!-- chat:end -->
 <script id="chat-js">
 (function(){
