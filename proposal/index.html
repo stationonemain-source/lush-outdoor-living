@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposal for Lush Outdoor Living · Station.Solutions</title>
+<meta name="description" content="Station's proposal for Lush Outdoor Living: the new website, what we found on the current one, and the plan to launch.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231F2F25'/%3E%3Ctext x='50' y='74' text-anchor='middle' font-family='Georgia,serif' font-size='74' fill='%238EAD79'%3E%26%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* A proposal is a document: quiet paper, the studio's own greens, the new site embedded where Cole can scroll it.
+   Headings: Gloock (the new site's face). Reading: Albert Sans. Labels and figures: IBM Plex Mono. */
+:root{
+  --paper:#FFFFFF;--paper-2:#F3F5F0;--ink:#16201A;--ink-2:#45514A;--ink-3:#5A655D;
+  --line:#DDE3D9;--line-2:#C4CDC0;--deep:#1F2F25;--sage:#4C6840;--sage-bg:#E8EFE2;
+  --red:#9E2A22;--red-bg:#FBECEA;--amber:#7A4F00;--amber-bg:#FBF1DA;--green:#1E6A43;--green-bg:#E3F3EA;--pool:#1F5E68;--pool-bg:#E0EFF1;
+  --serif:"Gloock",Georgia,serif;--sans:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --gut:clamp(16px,4vw,48px);--max:1060px;color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--pool)}
+:focus-visible{outline:3px solid var(--pool);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+.label{font:500 12px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(34px,4.2vw,52px);line-height:1.02;margin:8px 0 18px}
+h3{font-size:clamp(21px,1.9vw,25px);line-height:1.15;margin-bottom:8px}
+p{margin:0 0 14px;max-width:66ch}
+section{padding-block:clamp(56px,7vw,88px) 0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* cover */
+.cover{background:var(--deep);color:#EEF2EC;padding-block:clamp(36px,6vw,68px) clamp(44px,6vw,72px)}
+.cover .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(40px,7vw,80px)}
+.cover .label{color:#B7C4B9}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:400 21px/1 var(--serif)}
+.brand span{font-size:42px;color:#8EAD79;margin-top:-6px}
+.cover h1{font-size:clamp(46px,7.4vw,96px);line-height:.98;color:#fff}
+.cover h1 em{font-style:normal;color:#8EAD79}
+.cover p{color:#C3CEC4;font-size:clamp(18px,1.6vw,21px);margin-top:22px;max-width:54ch}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:clamp(36px,5vw,56px);border-top:1px solid rgba(238,242,236,.22);padding-top:18px}
+.meta span{display:block}.meta .label{margin-bottom:6px}
+.meta b{font:600 15px/1.35 var(--sans);color:#fff}
+@media (max-width:700px){.meta{grid-template-columns:1fr 1fr}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px;padding-block:22px;border-bottom:1px solid var(--line)}
+.toc a{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:999px;font:600 14px/1 var(--sans);color:var(--ink);text-decoration:none}
+.toc a:hover{border-color:var(--ink)}
+
+.summary{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.total{background:var(--paper-2);border:1px solid var(--line);padding:24px}
+.total .big{font:400 clamp(44px,5vw,60px)/1 var(--serif);display:block;margin:8px 0 6px}
+.total .sub{font:500 14px/1.45 var(--mono);color:var(--ink-2)}
+.total ul{margin:16px 0 0;padding-left:18px;font-size:16px;color:var(--ink-2)}
+@media (max-width:800px){.summary{grid-template-columns:1fr}}
+
+.screen{margin-top:22px;overflow:hidden;background:var(--deep);box-shadow:0 30px 60px -20px rgba(22,32,26,.45),0 0 0 1px rgba(22,32,26,.08)}
+.chrome{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#172219;color:#B7C4B9;font:500 12px/1 var(--mono)}
+.dots{display:flex;gap:6px}.dots i{width:11px;height:11px;border-radius:50%;background:#35453A}
+.url{flex:1;min-width:0;background:#0F1811;border-radius:6px;padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chrome a{color:#fff;text-decoration:none;border:1px solid #35453A;border-radius:6px;padding:0 10px;white-space:nowrap;min-height:32px;display:inline-flex;align-items:center}
+.screen iframe{display:block;width:100%;height:min(78vh,760px);border:0;background:#F6F7F3}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;font:600 15px/1 var(--sans);text-decoration:none;border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ink{background:var(--deep);border-color:var(--deep);color:#fff}
+.btn:hover{opacity:.88}
+
+.built{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.built div{border:1px solid var(--line);padding:20px}
+.built p{font-size:16px;color:var(--ink-2);margin:0}
+@media (max-width:820px){.built{grid-template-columns:1fr}}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:16px;min-width:620px}
+th{text-align:left;font:500 12px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);background:var(--paper-2);padding:12px 16px;border-bottom:1px solid var(--line)}
+td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{font-weight:700}
+.pill{display:inline-block;padding:4px 9px;border-radius:999px;font:500 12px/1.2 var(--mono);letter-spacing:.04em;white-space:nowrap}
+.bad{background:var(--red-bg);color:var(--red)}.ask{background:var(--amber-bg);color:var(--amber)}.ok{background:var(--green-bg);color:var(--green)}.info{background:var(--pool-bg);color:var(--pool)}
+
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:28px;border:1px solid var(--line);padding:22px;margin:18px 0 22px}
+.score .big{font:400 64px/1 var(--serif)}.score .big small{font:500 14px/1 var(--mono);color:var(--ink-3);margin-left:6px}
+.bars{flex:1;min-width:260px;display:grid;gap:9px}
+.bar{display:grid;grid-template-columns:170px 1fr 34px;gap:12px;align-items:center;font-size:14.5px}
+.bar i{display:block;height:8px;background:var(--paper-2);position:relative}
+.bar i b{position:absolute;inset:0 auto 0 0;background:var(--sage)}
+.bar span:last-child{font:600 14px/1 var(--mono);text-align:right}
+@media (max-width:520px){.bar{grid-template-columns:120px 1fr 30px}}
+
+.findings{display:grid;gap:12px}
+.finding{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;padding:18px 20px;border:1px solid var(--line)}
+.finding.good{border-color:#9CC9AE;background:var(--green-bg)}
+.finding h3{font-size:21px;margin:0 0 6px}
+.finding p{margin:0;font-size:16.5px;color:var(--ink-2)}
+.finding .ev{display:block;margin-top:8px;font:400 13px/1.5 var(--mono);color:var(--ink-3)}
+@media (max-width:640px){.finding{grid-template-columns:1fr;gap:8px}}
+
+.people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.people div{border:1px solid var(--line);padding:18px}
+.people b{display:block;font:400 20px/1.2 var(--serif);margin-bottom:6px}
+.people q{display:block;font-style:italic;color:var(--ink);margin:8px 0}
+.people p{font-size:15.5px;color:var(--ink-2);margin:0}
+@media (max-width:760px){.people{grid-template-columns:1fr}}
+
+.scope{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{border:1px solid var(--line);padding:22px}
+.card ul{margin:10px 0 0;padding-left:18px;font-size:16px;color:var(--ink-2)}
+.card li{margin-bottom:4px}
+.card .price{float:right;font:600 17px/1 var(--mono);color:var(--ink);margin-left:12px}
+@media (max-width:760px){.scope{grid-template-columns:1fr}}
+
+.price-tbl td:last-child,.price-tbl th:last-child{text-align:right;white-space:nowrap}
+.price-tbl tfoot td{font:700 17px/1.3 var(--sans);background:var(--paper-2);border-top:2px solid var(--ink)}
+
+.steps{list-style:none;margin:0;padding:0;border-left:2px solid var(--line-2)}
+.steps li{position:relative;padding:0 0 22px 24px}
+.steps li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--deep)}
+.steps b{font:700 17px/1.3 var(--sans);display:block}
+.steps span{font-size:16px;color:var(--ink-2)}
+
+.need{columns:2 320px;column-gap:28px;padding-left:20px}
+.need li{break-inside:avoid;margin-bottom:10px;font-size:17px}
+
+.yes{margin-top:clamp(56px,7vw,88px);background:var(--deep);color:#EEF2EC;padding-block:clamp(48px,6vw,72px)}
+.yes h2{color:#fff}.yes p{color:#C3CEC4}
+.yes .btn{border-color:#EEF2EC;color:#fff}.yes .btn-ink{background:#EEF2EC;color:var(--deep)}
+footer{padding-block:28px;font:400 13px/1.6 var(--mono);color:var(--ink-3);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="../"><span aria-hidden="true">&amp;</span>Lush Outdoor Living</a>
+      <span class="label">Proposal &middot; prepared by Station.Solutions</span>
+    </div>
+    <h1>Your yards deserve a website <em>that builds like you do.</em></h1>
+    <p>Cole, this is everything in one place: the new site we have already built for Lush, what we found on the current one, and exactly what it takes to launch it.</p>
+    <div class="meta">
+      <div><span class="label">Prepared for</span><b>Cole Parish, RLA<br>Lush Outdoor Living, Inc.</b></div>
+      <div><span class="label">Prepared by</span><b>Station.Solutions</b></div>
+      <div><span class="label">Date</span><b>29 September 2026</b></div>
+      <div><span class="label">Valid until</span><b>29 October 2026</b></div>
+    </div>
+  </div>
+</header>
+
+<nav class="wrap toc" aria-label="Contents">
+  <a href="#summary">Summary</a><a href="#site">See the site</a><a href="#built">What&rsquo;s built</a><a href="#found">What we found</a><a href="#people">How it reads</a><a href="#plan">The plan</a><a href="#price">Investment</a><a href="#when">Timeline</a><a href="#need">What we need</a>
+</nav>
+
+<main>
+<section id="summary" aria-labelledby="sum-h">
+  <div class="wrap summary">
+    <div>
+      <span class="label">The short version</span>
+      <h2 id="sum-h">The work is fifteen years ahead of the website.</h2>
+      <p>Lush is a registered landscape architect&rsquo;s studio that designs and builds its own pools and gardens. Online, that shows up as one grey screen with 23 words, five small black-and-white photos, and a Google listing that files Lush as a &ldquo;General Contractor&rdquo;. Homeowners searching for a custom pool builder in Houston do not find Lush at all.</p>
+      <p>We have already built the replacement. It is live below as a private preview. What&rsquo;s left is to fill it with Lush&rsquo;s own photographs, connect it to your inbox, fix the Google listing, and put it on lushoutdoors.com.</p>
+    </div>
+    <aside class="total" aria-label="Total">
+      <span class="label">To launch</span>
+      <span class="big num">$4,500</span>
+      <span class="sub">one time &middot; hosting &amp; care quoted monthly</span>
+      <ul>
+        <li>The new website on lushoutdoors.com</li>
+        <li>Plan your yard survey, straight to your inbox</li>
+        <li>Ask the studio AI assistant</li>
+        <li>Google listing, search and reviews set up</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section id="site" aria-labelledby="site-h">
+  <div class="wrap">
+    <span class="label">Already built &middot; private preview</span>
+    <h2 id="site-h">See the new site</h2>
+    <p>Scroll it right here, or open it full screen. Try the build section, the Plan your yard survey, and the Ask the studio button in the corner. It is hidden from Google until launch.</p>
+    <div class="screen">
+      <div class="chrome"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="url">lushoutdoors.com &middot; preview</span><a href="../" target="_blank" rel="noopener">Open full screen &#8599;</a></div>
+      <iframe src="../" title="Preview of the new Lush Outdoor Living website" loading="lazy"></iframe>
+    </div>
+    <div class="row">
+      <a class="btn btn-ink" href="../" target="_blank" rel="noopener">Open the new site</a>
+      <a class="btn" href="#found">What we found on the current site</a>
+    </div>
+  </div>
+</section>
+
+<section id="built" aria-labelledby="built-h">
+  <div class="wrap">
+    <span class="label">What&rsquo;s in the preview</span>
+    <h2 id="built-h">Three things your current site can&rsquo;t do</h2>
+    <div class="built">
+      <div><h3>Shows how a yard gets built</h3><p>Eight stages, from the lawn as it is to the first evening by the water, which visitors step through themselves. It explains design-build without a paragraph. At launch it uses photos from one of your real jobs.</p></div>
+      <div><h3>Collects the right leads</h3><p>Plan your yard is a one-minute survey: who&rsquo;s asking, what they want, what&rsquo;s there now, timing, budget, photos of the yard, then contact details. You get a ready-made project brief, and builders and realtors sort themselves from homeowners.</p></div>
+      <div><h3>Answers questions at 10 PM</h3><p>Ask the studio is an AI assistant that answers from facts you approve. It never quotes prices or promises dates; it sends people to the survey or your phone. It is capped, so it can&rsquo;t run up a bill.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="found" aria-labelledby="found-h">
+  <div class="wrap">
+    <span class="label">Audit of lushoutdoors.com and your Google listing &middot; 28 September 2026</span>
+    <h2 id="found-h">What we found</h2>
+    <p>Every point below was checked on the live site and in Google&rsquo;s own business data. The score measures how easily a homeowner can find, trust and reach you online, not the quality of the pools and gardens.</p>
+    <div class="score">
+      <span class="big">50<small>of 100</small></span>
+      <div class="bars">
+        <div class="bar"><span>Google listing</span><i><b style="width:63%"></b></i><span>63</span></div>
+        <div class="bar"><span>Reviews</span><i><b style="width:44%"></b></i><span>44</span></div>
+        <div class="bar"><span>Website</span><i><b style="width:83%"></b></i><span>83</span></div>
+        <div class="bar"><span>Local search</span><i><b style="width:33%"></b></i><span>33</span></div>
+        <div class="bar"><span>Tools &amp; tracking</span><i><b style="width:0%"></b></i><span>0</span></div>
+      </div>
+    </div>
+    <div class="findings">
+      <div class="finding good"><span class="pill ok">Good news</span><div><h3>The site is clean</h3><p>We checked all 19 addresses on the site as a visitor and as Google&rsquo;s crawler for hidden spam links, the kind hackers plant on older WordPress sites. Nothing found, and an independent malware scan came back clean. Your name, address and phone also match everywhere, which is the part many businesses get wrong.</p></div></div>
+      <div class="finding"><span class="pill bad">Website</span><div><h3>One screen, 23 words</h3><p>The whole site is a logo, five black-and-white photos at 253 pixels, and the address. Nothing says what Lush does, where, or how a project runs. Google has 19 addresses for the site and every one serves that same screen. The full-size colour photos are on the server; the site shows them grey and small.</p><span class="ev">19 sitemap addresses, identical page &middot; no heading, no page descriptions per service, no phone layout</span></div></div>
+      <div class="finding"><span class="pill bad">Search</span><div><h3>Missing from &ldquo;custom pool builder Houston&rdquo;</h3><p>Google lists Lush for &ldquo;landscape architect Houston&rdquo; and &ldquo;outdoor living design build Houston&rdquo;, but not in the 20 results for custom pool builder. The listing&rsquo;s category and the words on the site decide that search, and neither says pool.</p><span class="ev">Google business category today: General Contractor</span></div></div>
+      <div class="finding"><span class="pill ask">Reviews</span><div><h3>Five perfect reviews, the newest from June 2025</h3><p>Every review Lush has is five stars. There are five, over six years. The ten Houston pool and landscape firms Google shows around you hold a median of 232. A steady ask after every build is the fix.</p></div></div>
+      <div class="finding"><span class="pill ask">Leads</span><div><h3>No way to start a project from the site</h3><p>No form, no survey, no booking. &ldquo;Contact&rdquo; reloads the same page. Someone ready to call has to write an email with no idea what to include, and the studio learns nothing about the yard before the first conversation.</p></div></div>
+      <div class="finding"><span class="pill info">Tracking</span><div><h3>Nothing measures who visits</h3><p>No analytics, so there is no way to know how many homeowners find the site after seeing a finished pool, or how many leave without calling.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="people" aria-labelledby="people-h">
+  <div class="wrap">
+    <span class="label">How the brand reads today</span>
+    <h2 id="people-h">Four people who decide whether Lush gets the call</h2>
+    <div class="people">
+      <div><b>A homeowner who just bought in West U</b><q>&ldquo;Is this company still in business?&rdquo;</q><p>They want proof you build near them, how a project runs, and a way to ask. Today they find an address. The new site answers all three and takes photos of their yard.</p></div>
+      <div><b>A custom home builder</b><q>&ldquo;I can&rsquo;t send my client to this link.&rdquo;</q><p>Your strongest credential for a builder, Registered Landscape Architect, is not visible anywhere on the page. The new site leads with it, and the survey sends builders straight to you.</p></div>
+      <div><b>A design-literate client comparing studios</b><q>&ldquo;Which one is the real studio?&rdquo;</q><p>They judge by photography. Black-and-white thumbnails drain the water of its colour, which is what a pool sells. The new site shows the work large and in colour.</p></div>
+      <div><b>A family browsing on a phone at night</b><q>&ldquo;Everything is tiny.&rdquo;</q><p>The current site has no phone layout. The new one is built for phones first, with a Call button, the survey and the assistant for after-hours questions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="plan" aria-labelledby="plan-h">
+  <div class="wrap">
+    <span class="label">Scope</span>
+    <h2 id="plan-h">The plan</h2>
+    <div class="scope">
+      <div class="card"><h3>1. Finish the website with Lush&rsquo;s own work</h3><ul>
+        <li>Your project photos in the portfolio, full size and in colour</li>
+        <li>The build section rebuilt from one of your real jobs</li>
+        <li>Service pages for pools, landscape architecture, renovations and outdoor living</li>
+        <li>Your approval on every word and every fact</li>
+      </ul></div>
+      <div class="card"><h3>2. Connect the leads</h3><ul>
+        <li>Plan your yard survey delivered to your inbox and phone, photos attached</li>
+        <li>Ask the studio assistant, trained only on facts you approve</li>
+        <li>Budget ranges and questions set to how you actually work</li>
+      </ul></div>
+      <div class="card"><h3>3. Get found</h3><ul>
+        <li>Google listing: Swimming Pool Contractor as the main category, Landscape Architect second, service areas, https link</li>
+        <li>A simple review request after every finished build</li>
+        <li>Search setup: titles, business details for Google, sitemap, analytics</li>
+      </ul></div>
+      <div class="card"><h3>4. Launch on lushoutdoors.com</h3><ul>
+        <li>Move the site onto your domain with a secure connection</li>
+        <li>Old addresses point to the right new pages, so no links break</li>
+        <li>The old WordPress site retired once the new one is confirmed live</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="price" aria-labelledby="price-h">
+  <div class="wrap">
+    <span class="label">Investment</span>
+    <h2 id="price-h">What it costs</h2>
+    <div class="tbl-wrap">
+      <table class="price-tbl">
+        <thead><tr><th scope="col">Item</th><th scope="col">When</th><th scope="col">Price</th></tr></thead>
+        <tbody>
+          <tr><td><b>Website, finished and launched</b><br><span style="color:var(--ink-2);font-size:15px">Design, pages, survey, AI assistant, Google listing and search setup, domain move</span></td><td>One time</td><td class="num">$4,500</td></tr>
+          <tr><td><b>Hosting &amp; care</b><br><span style="color:var(--ink-2);font-size:15px">Hosting, domain renewal, the assistant, updates and security</span></td><td>Monthly, from launch</td><td>Quoted with you</td></tr>
+          <tr><td><b>Professional photography</b> (optional)<br><span style="color:var(--ink-2);font-size:15px">Two or three finished yards, one at dusk. We arrange it; the photographer bills directly.</span></td><td>If you want it</td><td>Photographer&rsquo;s quote</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total to launch</td><td>Half to start, half at launch</td><td class="num">$4,500</td></tr></tfoot>
+      </table>
+    </div>
+    <p style="margin-top:14px;font-size:16px;color:var(--ink-2)">No setup fees and nothing hidden. The preview you see is included in the launch price.</p>
+  </div>
+</section>
+
+<section id="when" aria-labelledby="when-h">
+  <div class="wrap">
+    <span class="label">Timeline</span>
+    <h2 id="when-h">About three weeks, mostly waiting on photos</h2>
+    <ol class="steps">
+      <li><b>Week 1 &middot; You say yes</b><span>First invoice, a 30-minute call to go through the site, and the photo handoff.</span></li>
+      <li><b>Days 1&ndash;2 &middot; Google listing</b><span>Category, service areas and the review ask, fixed straight away.</span></li>
+      <li><b>Weeks 1&ndash;2 &middot; Your work goes in</b><span>Portfolio, build section from a real job, service pages, the survey connected to you.</span></li>
+      <li><b>Week 3 &middot; Review and launch</b><span>You approve every page, lushoutdoors.com switches over, and Google is notified.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="need" aria-labelledby="need-h">
+  <div class="wrap">
+    <span class="label">From you</span>
+    <h2 id="need-h">What we need</h2>
+    <ul class="need">
+      <li><b>Project photos</b> you own, full size, with the neighbourhood and year for each.</li>
+      <li><b>Progress photos from one job</b>, dirt to finished yard, for the build section.</li>
+      <li>Your <b>budget ranges</b> for the survey, and whether you take smaller or landscape-only jobs.</li>
+      <li>The <b>facts the assistant may use</b>: services, service area, and anything you never want it to say.</li>
+      <li>Your <b>licence details</b> and warranty terms, if you want them on the site.</li>
+      <li>Two or three <b>client quotes</b> you are happy to publish.</li>
+      <li>Access to your <b>Google Business Profile</b>, your <b>domain</b> at GoDaddy and your <b>hosting</b> at HostPapa. We walk you through sharing access safely, without passwords.</li>
+      <li>Where survey leads should go: <b>email, text, or both</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="yes" aria-labelledby="yes-h">
+  <div class="wrap">
+    <h2 id="yes-h">Ready when you are</h2>
+    <p>Reply to the email this came with and we&rsquo;ll set up the call. Want changes to the design first? Tell us what, and we&rsquo;ll make them before you decide.</p>
+    <div class="row"><a class="btn btn-ink" href="../" target="_blank" rel="noopener">Open the new site</a></div>
+  </div>
+</section>
+</main>
+
+<div class="wrap"><footer><span>Station.Solutions &middot; proposal for Lush Outdoor Living &middot; 29 September 2026 &middot; valid for 30 days</span><span>Private preview. Not indexed by search engines.</span></footer></div>
+</body>
+</html>
