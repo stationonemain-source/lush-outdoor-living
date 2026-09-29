@@ -14,8 +14,8 @@
 /* Lush Outdoor Living. A landscape architect's monograph: quiet paper, the work large, captions like plate notes.
    Display: Gloock. Everything else: Albert Sans. Colours from their own sage logo, the pool, and the deep green of a clipped hedge. */
 :root{
-  --paper:#F6F7F3;--paper-2:#ECEFE7;--ink:#1A201B;--ink-2:#4B554D;--ink-3:#6E786F;--line:#D8DDD4;
-  --sage:#5B7A4C;--sage-lite:#8EAD79;--deep:#1F2F25;--deep-2:#2A3D31;--pool:#2C6B75;
+  --paper:#F6F7F3;--paper-2:#ECEFE7;--ink:#1A201B;--ink-2:#4B554D;--ink-3:#586159;--line:#D8DDD4;
+  --sage:#4C6840;--sage-lite:#8EAD79;--deep:#1F2F25;--deep-2:#2A3D31;--pool:#2C6B75;
   --serif:"Gloock",Georgia,"Times New Roman",serif;--sans:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --gut:clamp(18px,4.5vw,64px);--max:1320px;color-scheme:light;
 }
@@ -110,9 +110,10 @@ p{margin:0 0 14px;max-width:62ch}
 .play{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center}
 .play:hover{border-color:#fff}
 .play svg{width:18px;height:18px}
+.steps-wrap{position:relative}
 .steps{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));list-style:none;margin:0;padding:0;position:relative}
 .steps::before{content:"";position:absolute;left:0;right:0;top:7px;height:1px;background:rgba(255,255,255,.22)}
-.steps .bar{position:absolute;left:0;top:7px;height:1px;background:var(--sage-lite);transition:width .6s ease}
+.steps-wrap .bar{position:absolute;left:0;top:7px;height:1px;background:var(--sage-lite);transition:width .6s ease;z-index:1}
 .step{position:relative;padding-top:24px;cursor:pointer;background:none;border:0;color:#9DB09F;text-align:left;font:inherit}
 .step::before{content:"";position:absolute;top:2px;left:0;width:11px;height:11px;border-radius:50%;background:var(--deep);border:1px solid rgba(255,255,255,.4)}
 .step.on::before,.step.done::before{background:var(--sage-lite);border-color:var(--sage-lite)}
@@ -122,7 +123,7 @@ p{margin:0 0 14px;max-width:62ch}
 .step-copy{margin-top:26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;min-height:84px}
 .step-copy h3{font-size:clamp(26px,2.4vw,34px);color:#fff}
 .step-copy p{color:#C3CEC4;margin:0}
-@media (max-width:760px){.steps{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}.steps::before,.steps .bar{display:none}.step-copy{grid-template-columns:1fr}}
+@media (max-width:760px){.steps{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:14px}.steps::before,.steps-wrap .bar{display:none}.step-copy{grid-template-columns:1fr}}
 
 /* before / after */
 .ba{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,88px);align-items:center}
@@ -240,7 +241,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="logo" href="#main" aria-label="Lush Outdoor Living, home"><span class="amp" aria-hidden="true">&amp;</span><span><b>Lush Outdoor Living</b><small>Pool &amp; landscape architecture &middot; construction</small></span></a>
+    <a class="logo" href="#main"><span class="amp" aria-hidden="true">&amp;</span><span><b>Lush Outdoor Living</b><small>Pool &amp; landscape architecture &middot; construction</small></span></a>
     <ul class="nav">
       <li><a href="#work">Work</a></li>
       <li><a href="#build">The build</a></li>
@@ -317,7 +318,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
     <div class="rail">
       <button class="play" id="playBuild" type="button" aria-label="Play the build"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></button>
       <div>
-        <ol class="steps" id="steps" aria-label="Build stages"><span class="bar" id="bar" aria-hidden="true"></span></ol>
+        <div class="steps-wrap"><span class="bar" id="bar" aria-hidden="true"></span><ol class="steps" id="steps" aria-label="Build stages"></ol></div>
         <div class="step-copy" aria-live="polite"><h3 id="stepTitle"></h3><p id="stepText"></p></div>
       </div>
     </div>
