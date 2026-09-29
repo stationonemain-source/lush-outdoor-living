@@ -236,6 +236,42 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 @media (max-width:560px){.brief dl{grid-template-columns:1fr}}
 .consent{font-size:13px;color:var(--ink-3);margin:6px 0 0}
 </style>
+<style id="chat-css">
+/* Ask the studio: AI chat. Quiet launcher, a panel in the site's own greens, answers only from the studio's facts. */
+.chat-launch{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:50;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 14px;border-radius:999px;border:0;background:var(--deep);color:#fff;font:600 15px/1 var(--sans);cursor:pointer;box-shadow:0 10px 28px rgba(20,32,24,.28);transition:transform .2s,background .2s}
+.chat-launch:hover{background:var(--sage);transform:translateY(-1px)}
+.chat-launch .amp{font:400 30px/1 var(--serif);color:var(--sage-lite);margin-top:-4px}
+.chat-launch[aria-expanded="true"]{display:none}
+.chat{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 18px);z-index:51;width:min(400px,calc(100vw - 36px));height:min(620px,calc(100vh - 110px));display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 60px rgba(20,32,24,.3)}
+.chat[hidden]{display:none}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 18px;background:var(--deep);color:#fff}
+.chat-head .amp{font:400 34px/1 var(--serif);color:var(--sage-lite);margin-top:-4px}
+.chat-head b{display:block;font:400 19px/1.1 var(--serif)}
+.chat-head small{display:block;font-size:12.5px;color:#C3CEC4;margin-top:3px}
+.chat-x{margin-left:auto;min-width:44px;min-height:44px;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;font:600 13px/1 var(--sans);cursor:pointer}
+.chat-x:hover{border-color:#fff}
+.chat-log{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;overscroll-behavior:contain}
+.msg{max-width:86%;padding:11px 14px;font-size:15.5px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line)}
+.msg.me{align-self:flex-end;background:var(--deep);color:#fff}
+.msg.typing{color:var(--ink-3)}
+.msg.typing i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ink-3);margin-right:4px;animation:blink 1.2s infinite}
+.msg.typing i:nth-child(2){animation-delay:.2s}.msg.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:40px;padding:0 13px;border:1px solid var(--line);background:#fff;font:500 14px/1.2 var(--sans);color:var(--ink);cursor:pointer;text-align:left}
+.chip:hover{border-color:var(--ink-3)}
+.chat-foot{border-top:1px solid var(--line);padding:12px 14px calc(env(safe-area-inset-bottom,0px) + 12px);background:var(--paper)}
+.chat-form{display:flex;gap:8px}
+.chat-form input{flex:1;min-width:0;min-height:46px;font:400 16px/1.3 var(--sans);border:1px solid var(--line);background:#fff;padding:0 12px}
+.chat-form input:focus{outline:none;border-color:var(--pool)}
+.chat-form button{min-height:46px;padding:0 16px;border:0;background:var(--deep);color:#fff;font:600 14px/1 var(--sans);cursor:pointer}
+.chat-form button[disabled]{opacity:.5;cursor:default}
+.chat-acts{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+.chat-acts a{font:600 13px/1 var(--sans);color:var(--deep)}
+@media (max-width:560px){.chat{right:0;left:0;bottom:0;width:100%;height:88vh;border-left:0;border-right:0}.chat-launch span.l{display:none}.chat-launch{padding:0 16px}}
+@media (prefers-reduced-motion:reduce){.msg.typing i{animation:none}}
+</style>
 </head>
 <body>
 
@@ -552,6 +588,50 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
   sv.addEventListener('change',function(e){save();var q=qs[at]&&qs[at].getAttribute('data-q');if(e.target.type==='radio'&&Date.now()-lastPtr<900&&['who','now','when','budget'].indexOf(q)>-1){setTimeout(function(){sv.requestSubmit?sv.requestSubmit():sv.dispatchEvent(new Event('submit',{cancelable:true}))},180)}});
   document.getElementById('s-photos').addEventListener('change',function(){var t=document.getElementById('thumbs');t.innerHTML='';[].slice.call(this.files,0,6).forEach(function(f){var im=document.createElement('img');im.alt='';im.src=URL.createObjectURL(f);t.appendChild(im)})});
   load();show();
+})();
+</script>
+<!-- chat:start -->
+<button class="chat-launch" id="chatLaunch" type="button" aria-controls="chat" aria-expanded="false"><span class="amp" aria-hidden="true">&amp;</span><span class="l">Ask the studio</span><span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> (AI assistant)</span></button>
+<section class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chatTitle" hidden>
+  <div class="chat-head"><span class="amp" aria-hidden="true">&amp;</span><div><b id="chatTitle">Ask the studio</b><small>AI assistant for Lush Outdoor Living</small></div><button class="chat-x" id="chatClose" type="button" aria-label="Close chat">&times;</button></div>
+  <div class="chat-log" id="chatLog" aria-live="polite"></div>
+  <div class="chat-foot">
+    <form class="chat-form" id="chatForm"><label for="chatIn" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Your question</label><input id="chatIn" autocomplete="off" maxlength="600" placeholder="Ask about pools, gardens, how a project starts"><button type="submit" id="chatSend">Send</button></form>
+    <div class="chat-acts"><span>AI can be wrong. The studio confirms everything.</span><a href="#start" id="chatPlan">Plan your yard</a></div>
+  </div>
+</section>
+<!-- chat:end -->
+<script id="chat-js">
+(function(){
+  var URL_="https://n8n.srv1748596.hstgr.cloud/webhook/lush-chat", KEY='lush-chat-v1';
+  var launch=document.getElementById('chatLaunch'),box=document.getElementById('chat'),log=document.getElementById('chatLog'),form=document.getElementById('chatForm'),inp=document.getElementById('chatIn'),send=document.getElementById('chatSend');
+  var st={sid:'',history:[]};
+  try{st=JSON.parse(sessionStorage.getItem(KEY)||'null')||st}catch(e){}
+  if(!st.sid){st.sid='s'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+  function save(){try{sessionStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  var GREET='Hi. I can answer questions about the studio, pools, gardens and how a project with Lush starts. What are you thinking about?';
+  var CHIPS=['How does a project start?','What does a landscape architect do?','Do you renovate old pools?','How much does a pool cost?'];
+  function bubble(role,text){var d=document.createElement('div');d.className='msg '+(role==='user'?'me':'bot');d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+  function render(){log.innerHTML='';bubble('assistant',GREET);st.history.forEach(function(m){bubble(m.role,m.content)});
+    if(!st.history.length){var c=document.createElement('div');c.className='chips';CHIPS.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t;b.addEventListener('click',function(){c.remove();ask(t)});c.appendChild(b)});log.appendChild(c)}}
+  function open(){box.hidden=false;launch.setAttribute('aria-expanded','true');render();setTimeout(function(){inp.focus()},30)}
+  function close(){box.hidden=true;launch.setAttribute('aria-expanded','false');launch.focus()}
+  launch.addEventListener('click',open);
+  document.getElementById('chatClose').addEventListener('click',close);
+  document.getElementById('chatPlan').addEventListener('click',function(){box.hidden=true;launch.setAttribute('aria-expanded','false')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!box.hidden)close()});
+  var busy=false;
+  function ask(q){q=String(q||'').trim();if(!q||busy)return;busy=true;send.disabled=true;
+    var chips=log.querySelector('.chips');if(chips)chips.remove();
+    bubble('user',q);var t=document.createElement('div');t.className='msg bot typing';t.innerHTML='<i></i><i></i><i></i>';log.appendChild(t);log.scrollTop=log.scrollHeight;
+    var ctl=('AbortController' in window)?new AbortController():null,timer=setTimeout(function(){if(ctl)ctl.abort()},70000);
+    fetch(URL_,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({sid:st.sid,q:q,history:st.history.slice(-8)}),signal:ctl?ctl.signal:undefined})
+      .then(function(r){return r.json()})
+      .then(function(d){var a=(d&&d.reply)||'Sorry, something went wrong. Please call the studio on 713.444.2339.';t.remove();bubble('assistant',a);st.history.push({role:'user',content:q},{role:'assistant',content:a});st.history=st.history.slice(-16);save()})
+      .catch(function(){t.remove();bubble('assistant','I could not reach the studio just now. Please call 713.444.2339 or use Plan your yard on this page.')})
+      .then(function(){clearTimeout(timer);busy=false;send.disabled=false;inp.focus()});
+  }
+  form.addEventListener('submit',function(e){e.preventDefault();var q=inp.value;inp.value='';ask(q)});
 })();
 </script>
 </body>
