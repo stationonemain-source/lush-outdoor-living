@@ -199,6 +199,41 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 .lb-bar b{color:#fff;font:400 22px/1.2 var(--serif);display:block}
 .lb-bar .navs{display:flex;gap:8px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* plan-your-yard survey */
+.survey{background:#fff;border:1px solid var(--line);padding:clamp(20px,3vw,36px);position:relative}
+.sv-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font:600 12px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.sv-bar{height:3px;background:var(--paper-2);margin-bottom:26px}
+.sv-bar i{display:block;height:100%;width:0;background:var(--sage);transition:width .35s ease}
+.sv-q h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1;margin-bottom:8px}
+.sv-q .hint{color:var(--ink-3);font-size:15px;margin:0 0 20px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt{position:relative;display:flex;align-items:center;gap:12px;min-height:58px;padding:12px 16px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font:500 16px/1.3 var(--sans);letter-spacing:0;color:var(--ink);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--ink-3)}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt .box{flex:none;width:20px;height:20px;border:1.5px solid var(--ink-3);display:grid;place-items:center}
+.opt input[type=radio]+.box{border-radius:50%}
+.opt input:checked+.box{background:var(--deep);border-color:var(--deep)}
+.opt input:checked+.box::after{content:"";width:8px;height:8px;background:#fff;border-radius:inherit}
+.opt:has(input:checked){border-color:var(--deep);background:#fff}
+.opt input:focus-visible+.box{outline:2px solid var(--pool);outline-offset:3px}
+.opt small{display:block;color:var(--ink-3);font-size:13px;margin-top:2px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.sv-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px}
+.sv-back{background:none;border:0;font:600 15px/1 var(--sans);color:var(--ink-2);cursor:pointer;min-height:44px;padding:0 4px}
+.sv-back[disabled]{visibility:hidden}
+.sv-err{color:#9C2B1D;font-size:15px;min-height:1.4em;margin:12px 0 0}
+.drop{display:grid;place-items:center;text-align:center;gap:6px;border:1.5px dashed var(--line);padding:26px;background:var(--paper);cursor:pointer}
+.drop:hover{border-color:var(--ink-3)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.thumbs img{width:76px;height:76px;object-fit:cover}
+.brief{background:var(--paper);border:1px solid var(--line);padding:18px 20px;margin:18px 0}
+.brief dl{display:grid;grid-template-columns:140px minmax(0,1fr);gap:8px 16px;margin:0;font-size:15.5px}
+.brief dt{font:600 12px/1.5 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.brief dd{margin:0}
+@media (max-width:560px){.brief dl{grid-template-columns:1fr}}
+.consent{font-size:13px;color:var(--ink-3);margin:6px 0 0}
 </style>
 </head>
 <body>
@@ -224,7 +259,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
       <span class="eyebrow">Houston &middot; since 2011</span>
       <h1 id="hero-h">Designed by a landscape architect. <em>Built by the same studio.</em></h1>
       <p class="lede">Pools, gardens and outdoor rooms for Houston homes, designed by Cole Parish, Registered Landscape Architect, and built by the team that drew them.</p>
-      <div class="ctas"><a class="btn btn-fill" href="#start">Start a project</a><a class="btn" href="#work">See the work</a></div>
+      <div class="ctas"><a class="btn btn-fill" href="#start">Plan your yard</a><a class="btn" href="#work">See the work</a></div>
     </div>
     <figure class="hero-media" style="margin:0">
       <div class="frame">
@@ -326,36 +361,101 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
 <section class="start" id="start" aria-labelledby="start-h">
   <div class="wrap start-grid">
     <div>
-      <span class="eyebrow">Start a project</span>
-      <h2 id="start-h">Tell us about your yard</h2>
-      <p style="margin-top:20px;color:var(--ink-2)">A few details and a couple of phone photos of the yard are enough for a first conversation. The studio replies to set a site visit.</p>
-      <p style="margin-top:22px"><a href="tel:+17134442339" style="font:400 26px/1.2 var(--serif);text-decoration:none">713.444.2339</a><br><a href="mailto:info@lushoutdoors.com">info@lushoutdoors.com</a></p>
+      <span class="eyebrow">Plan your yard</span>
+      <h2 id="start-h">Tell us about your yard in a minute</h2>
+      <p style="margin-top:20px;color:var(--ink-2)">A few taps about the project, a couple of phone photos if you have them, then where to reach you. You get a short project brief at the end, and the studio replies to set a site visit.</p>
+      <p style="margin-top:22px">Rather talk? <a href="tel:+17134442339" style="font:400 24px/1.2 var(--serif);text-decoration:none;white-space:nowrap">713.444.2339</a><br><a href="mailto:info@lushoutdoors.com">info@lushoutdoors.com</a></p>
     </div>
-    <form id="startForm" novalidate>
-      <div class="row2">
-        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
-        <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
-      </div>
-      <div class="row2">
-        <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
-        <label for="f-hood">Neighbourhood or address<input id="f-hood" name="address" autocomplete="street-address"></label>
-      </div>
-      <fieldset>
-        <legend>What are you thinking about?</legend>
-        <div class="chips">
-          <label for="c-pool"><input type="checkbox" id="c-pool" name="scope" value="New pool">New pool</label>
-          <label for="c-reno"><input type="checkbox" id="c-reno" name="scope" value="Renovation">Renovation</label>
-          <label for="c-land"><input type="checkbox" id="c-land" name="scope" value="Landscape">Landscape &amp; planting</label>
-          <label for="c-live"><input type="checkbox" id="c-live" name="scope" value="Outdoor living">Outdoor kitchen or living</label>
+    <form class="survey" id="survey" novalidate aria-live="polite">
+      <div class="sv-top"><span id="svStep">Step 1 of 7</span><span id="svTime">About a minute</span></div>
+      <div class="sv-bar" aria-hidden="true"><i id="svBar"></i></div>
+
+      <fieldset class="sv-q" data-q="who">
+        <legend><h3>First, who&rsquo;s asking?</h3></legend>
+        <p class="hint">So we can send the right person.</p>
+        <div class="opts">
+          <label class="opt" for="w1"><input type="radio" name="who" id="w1" value="Homeowner"><span class="box"></span><span>I own the home</span></label>
+          <label class="opt" for="w2"><input type="radio" name="who" id="w2" value="Buying or just bought"><span class="box"></span><span>Buying, or just bought</span></label>
+          <label class="opt" for="w3"><input type="radio" name="who" id="w3" value="Builder or architect"><span class="box"></span><span>Builder or architect<small>For a client&rsquo;s project</small></span></label>
+          <label class="opt" for="w4"><input type="radio" name="who" id="w4" value="Realtor or designer"><span class="box"></span><span>Realtor or designer</span></label>
         </div>
       </fieldset>
-      <div class="row2">
-        <label for="f-when">Timing<select id="f-when" name="when"><option>Within 6 months</option><option>6 to 12 months</option><option>Next year</option><option>Just exploring</option></select></label>
-        <label for="f-photos">Photos of the yard<input id="f-photos" name="photos" type="file" accept="image/*" multiple></label>
+
+      <fieldset class="sv-q" data-q="want" hidden>
+        <legend><h3>What are you picturing?</h3></legend>
+        <p class="hint">Pick as many as you like.</p>
+        <div class="opts">
+          <label class="opt" for="x1"><input type="checkbox" name="want" id="x1" value="A new pool"><span class="box"></span><span>A new pool</span></label>
+          <label class="opt" for="x2"><input type="checkbox" name="want" id="x2" value="A spa"><span class="box"></span><span>A spa</span></label>
+          <label class="opt" for="x3"><input type="checkbox" name="want" id="x3" value="Renovate an old pool"><span class="box"></span><span>Renovate an old pool</span></label>
+          <label class="opt" for="x4"><input type="checkbox" name="want" id="x4" value="Landscape and planting"><span class="box"></span><span>Landscape &amp; planting</span></label>
+          <label class="opt" for="x5"><input type="checkbox" name="want" id="x5" value="Outdoor kitchen or living"><span class="box"></span><span>Outdoor kitchen or living room</span></label>
+          <label class="opt" for="x6"><input type="checkbox" name="want" id="x6" value="Lighting"><span class="box"></span><span>Lighting</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="sv-q" data-q="now" hidden>
+        <legend><h3>What&rsquo;s there today?</h3></legend>
+        <p class="hint">Roughly is fine.</p>
+        <div class="opts">
+          <label class="opt" for="n1"><input type="radio" name="now" id="n1" value="Mostly lawn"><span class="box"></span><span>Mostly lawn</span></label>
+          <label class="opt" for="n2"><input type="radio" name="now" id="n2" value="An old pool to redo"><span class="box"></span><span>An old pool to redo</span></label>
+          <label class="opt" for="n3"><input type="radio" name="now" id="n3" value="A yard that needs a plan"><span class="box"></span><span>Some of it, no real plan</span></label>
+          <label class="opt" for="n4"><input type="radio" name="now" id="n4" value="New house being built"><span class="box"></span><span>A house still being built</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="sv-q" data-q="when" hidden>
+        <legend><h3>When would you like to start?</h3></legend>
+        <p class="hint">Design comes before building, so earlier is usually better.</p>
+        <div class="opts">
+          <label class="opt" for="t1"><input type="radio" name="when" id="t1" value="As soon as possible"><span class="box"></span><span>As soon as possible</span></label>
+          <label class="opt" for="t2"><input type="radio" name="when" id="t2" value="In the next 6 months"><span class="box"></span><span>In the next 6 months</span></label>
+          <label class="opt" for="t3"><input type="radio" name="when" id="t3" value="Next year"><span class="box"></span><span>Next year</span></label>
+          <label class="opt" for="t4"><input type="radio" name="when" id="t4" value="Just exploring"><span class="box"></span><span>Just exploring</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="sv-q" data-q="budget" hidden>
+        <legend><h3>What investment feels right?</h3></legend>
+        <p class="hint">An honest range helps us suggest what fits. It stays between you and the studio.</p>
+        <div class="opts">
+          <label class="opt" for="b1"><input type="radio" name="budget" id="b1" value="Under $75k"><span class="box"></span><span>Under $75k</span></label>
+          <label class="opt" for="b2"><input type="radio" name="budget" id="b2" value="$75k to $150k"><span class="box"></span><span>$75k to $150k</span></label>
+          <label class="opt" for="b3"><input type="radio" name="budget" id="b3" value="$150k to $300k"><span class="box"></span><span>$150k to $300k</span></label>
+          <label class="opt" for="b4"><input type="radio" name="budget" id="b4" value="$300k or more"><span class="box"></span><span>$300k or more</span></label>
+          <label class="opt" for="b5"><input type="radio" name="budget" id="b5" value="Not sure yet"><span class="box"></span><span>Not sure yet</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="sv-q" data-q="where" hidden>
+        <legend><h3>Where is the yard?</h3></legend>
+        <p class="hint">A neighbourhood or zip code is enough. Photos help a lot, and they are optional.</p>
+        <label for="s-where">Neighbourhood or zip code<input id="s-where" name="where" autocomplete="postal-code" placeholder="e.g. 77005 or West University"></label>
+        <label class="drop" for="s-photos" style="margin-top:14px"><input id="s-photos" name="photos" type="file" accept="image/*" multiple><b>Add photos of the yard</b><span style="font-size:14px;color:var(--ink-3)">Tap to choose from your phone or computer</span></label>
+        <div class="thumbs" id="thumbs"></div>
+      </fieldset>
+
+      <fieldset class="sv-q" data-q="contact" hidden>
+        <legend><h3>Where should the studio reach you?</h3></legend>
+        <p class="hint">Cole or the studio replies to set a time to see the yard.</p>
+        <div class="row2">
+          <label for="s-name">Name<input id="s-name" name="name" autocomplete="name"></label>
+          <label for="s-phone">Mobile<input id="s-phone" name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label for="s-email" style="margin-top:14px">Email<input id="s-email" name="email" type="email" autocomplete="email"></label>
+        <label for="s-best" style="margin-top:14px">Best way to reach you<select id="s-best" name="best"><option>A call</option><option>A text</option><option>An email</option></select></label>
+        <p class="consent">We use this only to reply about your project. No mailing lists.</p>
+      </fieldset>
+
+      <div class="sv-q" data-q="done" hidden>
+        <h3>Thank you. Here&rsquo;s your project brief.</h3>
+        <div class="brief"><dl id="brief"></dl></div>
+        <p class="hint" id="doneNote" style="margin:0">This is a preview of the new site, so nothing was sent. To reach the studio today, call 713.444.2339 or email info@lushoutdoors.com.</p>
       </div>
-      <label for="f-msg">Anything else<textarea id="f-msg" name="message"></textarea></label>
-      <div><button class="btn btn-fill" type="submit">Send to the studio</button></div>
-      <p class="note" id="formNote" role="status" aria-live="polite"></p>
+
+      <p class="sv-err" id="svErr" role="alert"></p>
+      <div class="sv-nav" id="svNav"><button class="sv-back" id="svBack" type="button" disabled>&larr; Back</button><button class="btn btn-fill" id="svNext" type="submit">Next</button></div>
     </form>
   </div>
 </section>
@@ -390,7 +490,7 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
     ['The yard as it is','Every project starts with a site visit: sun and shade, how water drains after a storm, and which trees are worth keeping.'],
     ['Excavation and shell','The pool is dug and shaped to the drawings, then steel and gunite form the shell.'],
     ['Water','Tile, coping and interior finish go on, then the first fill.'],
-    ['Terrace and kitchen','Paving, walls and the outdoor kitchen are built around the water, set to the levels on the plan.'],
+    ['Terrace','Stone paving goes in around the water, set to the levels on the plan and tied back to the porch steps.'],
     ['Planting','A landscape architect&rsquo;s planting plan: layers that look settled in the first year and better in the fifth.'],
     ['Details','Planters, furniture placement and the final edges, checked against the design.'],
     ['Lighting','Lighting is designed with the plan: steps, trees and water, so the yard works after dark.'],
@@ -425,12 +525,32 @@ footer{background:var(--deep);color:#C3CEC4;padding-block:clamp(56px,7vw,88px) 3
   lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-img'))close()});
   document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight'&&SETS[set].length>1){idx=(idx+1)%SETS[set].length;show()}if(e.key==='ArrowLeft'&&SETS[set].length>1){idx=(idx-1+SETS[set].length)%SETS[set].length;show()}});
 
-  /* ---------- form: validates, then says plainly it is a preview ---------- */
-  document.getElementById('startForm').addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('formNote'),miss=[];
-    if(!document.getElementById('f-name').value.trim())miss.push('your name');
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('f-email').value.trim()))miss.push('an email address');
-    if(miss.length){n.className='note err';n.textContent='Please add '+miss.join(' and ')+'.';return;}
-    n.className='note';n.textContent='This is a preview, so nothing was sent. Call 713.444.2339 or email info@lushoutdoors.com.';});
+  /* ---------- plan your yard: one question per screen, contact last, a brief at the end ---------- */
+  var sv=document.getElementById('survey'),qs=[].slice.call(sv.querySelectorAll('.sv-q')),at=0,KEY='lush-plan-v1';
+  var steps=qs.length-1;
+  function val(name){var els=sv.querySelectorAll('[name="'+name+'"]');var out=[];els.forEach(function(e){if((e.type==='radio'||e.type==='checkbox')){if(e.checked)out.push(e.value)}else if(e.type!=='file'&&e.value.trim())out.push(e.value.trim())});return out.join(', ');}
+  function save(){try{var d={};sv.querySelectorAll('input,select').forEach(function(e){if(e.type==='file')return;if(e.type==='radio'||e.type==='checkbox'){if(e.checked)(d[e.name]=d[e.name]||[]).push(e.value)}else d[e.id]=e.value});d._at=at;localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+  function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||'null');if(!d)return;sv.querySelectorAll('input,select').forEach(function(e){if(e.type==='file')return;if(e.type==='radio'||e.type==='checkbox'){e.checked=(d[e.name]||[]).indexOf(e.value)>-1}else if(d[e.id]!=null)e.value=d[e.id]});if(d._at&&d._at<steps)at=d._at}catch(e){}}
+  function show(){qs.forEach(function(q,i){q.hidden=i!==at});var done=at===steps;
+    document.getElementById('svStep').textContent=done?'Done':'Step '+(at+1)+' of '+steps;document.getElementById('svTime').textContent=done?'':(steps-at<=2?'Almost there':'About a minute');
+    document.getElementById('svBar').style.width=(done?100:at/steps*100)+'%';document.getElementById('svBack').disabled=at===0||done;
+    document.getElementById('svNav').hidden=done;document.getElementById('svNext').textContent=at===steps-1?'Send to the studio':'Next';document.getElementById('svErr').textContent='';}
+  function check(){var q=qs[at].getAttribute('data-q');
+    if(['who','now','when','budget'].indexOf(q)>-1&&!val(q))return 'Pick one to continue.';
+    if(q==='want'&&!val('want'))return 'Pick at least one.';
+    if(q==='contact'){var em=document.getElementById('s-email').value.trim(),ph=document.getElementById('s-phone').value.replace(/\D/g,'');
+      if(!document.getElementById('s-name').value.trim())return 'Please add your name.';
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)&&ph.length<10)return 'Please add an email address or a mobile number so the studio can reply.';}
+    return '';}
+  function brief(){var rows=[['You are',val('who')],['Picturing',val('want')],['Today',val('now')],['Timing',val('when')],['Investment',val('budget')],['Where',val('where')||'Not given'],['Photos',(document.getElementById('s-photos').files.length||0)+' attached'],['Reply by',val('best')+' to '+(document.getElementById('s-name').value.trim())]];
+    document.getElementById('brief').innerHTML=rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+String(r[1]).replace(/[<>&]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;'}[c]})+'</dd>'}).join('');}
+  sv.addEventListener('submit',function(e){e.preventDefault();var err=check();if(err){document.getElementById('svErr').textContent=err;return;}
+    at++;if(at===steps){brief();try{localStorage.removeItem(KEY)}catch(x){}}else save();show();sv.scrollIntoView({block:'start',behavior:reduce?'auto':'smooth'});});
+  document.getElementById('svBack').addEventListener('click',function(){if(at>0){at--;save();show();}});
+  var lastPtr=0;sv.addEventListener('pointerdown',function(){lastPtr=Date.now()});
+  sv.addEventListener('change',function(e){save();var q=qs[at]&&qs[at].getAttribute('data-q');if(e.target.type==='radio'&&Date.now()-lastPtr<900&&['who','now','when','budget'].indexOf(q)>-1){setTimeout(function(){sv.requestSubmit?sv.requestSubmit():sv.dispatchEvent(new Event('submit',{cancelable:true}))},180)}});
+  document.getElementById('s-photos').addEventListener('change',function(){var t=document.getElementById('thumbs');t.innerHTML='';[].slice.call(this.files,0,6).forEach(function(f){var im=document.createElement('img');im.alt='';im.src=URL.createObjectURL(f);t.appendChild(im)})});
+  load();show();
 })();
 </script>
 </body>
