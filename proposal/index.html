@@ -104,7 +104,7 @@ td b{font-weight:700}
 .people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .people div{border:1px solid var(--line);padding:18px}
 .people b{display:block;font:400 20px/1.2 var(--serif);margin-bottom:6px}
-.people q{display:block;font-style:italic;color:var(--ink);margin:8px 0}
+.people q{display:block;font-style:italic;color:var(--ink);margin:8px 0;quotes:none}
 .people p{font-size:15.5px;color:var(--ink-2);margin:0}
 @media (max-width:760px){.people{grid-template-columns:1fr}}
 
@@ -117,6 +117,19 @@ td b{font-weight:700}
 
 .price-tbl td:last-child,.price-tbl th:last-child{text-align:right;white-space:nowrap}
 .price-tbl tfoot td{font:700 17px/1.3 var(--sans);background:var(--paper-2);border-top:2px solid var(--ink)}
+@media (max-width:640px){
+  .tbl-wrap{overflow:visible}
+  .price-tbl{min-width:0}
+  .price-tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .price-tbl tr{display:block;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .price-tbl tbody tr:last-child{border-bottom:0}
+  .price-tbl tfoot tr{background:var(--paper-2);border-top:2px solid var(--ink);border-bottom:0}
+  .price-tbl td,.price-tbl tfoot td{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:0;border:0;background:none;text-align:right}
+  .price-tbl td:first-child{display:block;text-align:left}
+  .price-tbl td+td{margin-top:8px;font-size:15px}
+  .price-tbl td:last-child{white-space:normal}
+  .price-tbl td[data-label]::before{content:attr(data-label);flex:none;font:500 12px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:left}
+}
 
 .steps{list-style:none;margin:0;padding:0;border-left:2px solid var(--line-2)}
 .steps li{position:relative;padding:0 0 22px 24px}
@@ -280,15 +293,15 @@ footer{padding-block:28px;font:400 13px/1.6 var(--mono);color:var(--ink-3);displ
   <div class="wrap">
     <span class="label">Investment</span>
     <h2 id="price-h">What it costs</h2>
-    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Price table, scrolls sideways">
+    <div class="tbl-wrap" tabindex="0" role="region" aria-label="Price table">
       <table class="price-tbl">
         <thead><tr><th scope="col">Item</th><th scope="col">When</th><th scope="col">Price</th></tr></thead>
         <tbody>
-          <tr><td><b>Website, finished and launched</b><br><span style="color:var(--ink-2);font-size:15px">Design, pages, survey, AI assistant, Google listing and search setup, domain move</span></td><td>One time</td><td class="num">$2,500</td></tr>
-          <tr><td><b>Hosting &amp; care</b><br><span style="color:var(--ink-2);font-size:15px">Hosting, domain renewal, the assistant, updates and security</span></td><td>Monthly, from launch</td><td>Quoted with you</td></tr>
-          <tr><td><b>Professional photography</b> (optional)<br><span style="color:var(--ink-2);font-size:15px">Two or three finished yards, one at dusk. We arrange it; the photographer bills directly.</span></td><td>If you want it</td><td>Photographer&rsquo;s quote</td></tr>
+          <tr><td><b>Website, finished and launched</b><br><span style="color:var(--ink-2);font-size:15px">Design, pages, survey, AI assistant, Google listing and search setup, domain move</span></td><td data-label="When">One time</td><td class="num" data-label="Price">$2,500</td></tr>
+          <tr><td><b>Hosting &amp; care</b><br><span style="color:var(--ink-2);font-size:15px">Hosting, domain renewal, the assistant, updates and security</span></td><td data-label="When">Monthly, from launch</td><td data-label="Price">Quoted with you</td></tr>
+          <tr><td><b>Professional photography</b> (optional)<br><span style="color:var(--ink-2);font-size:15px">Two or three finished yards, one at dusk. We arrange it; the photographer bills directly.</span></td><td data-label="When">If you want it</td><td data-label="Price">Photographer&rsquo;s quote</td></tr>
         </tbody>
-        <tfoot><tr><td>Total to launch</td><td>Half to start, half at launch</td><td class="num">$2,500</td></tr></tfoot>
+        <tfoot><tr><td>Total to launch</td><td data-label="Paid">Half to start, half at launch</td><td class="num" data-label="Total">$2,500</td></tr></tfoot>
       </table>
     </div>
     <p style="margin-top:14px;font-size:16px;color:var(--ink-2)">No setup fees and nothing hidden. The preview you see is included in the launch price.</p>
@@ -298,12 +311,12 @@ footer{padding-block:28px;font:400 13px/1.6 var(--mono);color:var(--ink-3);displ
 <section id="when" aria-labelledby="when-h">
   <div class="wrap">
     <span class="label">Timeline</span>
-    <h2 id="when-h">About three weeks, mostly waiting on photos</h2>
+    <h2 id="when-h">About two weeks, mostly waiting on photos</h2>
     <ol class="steps">
       <li><b>Week 1 &middot; You say yes</b><span>First invoice, a 30-minute call to go through the site, and the photo handoff.</span></li>
       <li><b>Days 1&ndash;2 &middot; Google listing</b><span>Category, service areas and the review ask, fixed straight away.</span></li>
       <li><b>Weeks 1&ndash;2 &middot; Your work goes in</b><span>Portfolio, build section from a real job, service pages, the survey connected to you.</span></li>
-      <li><b>Week 3 &middot; Review and launch</b><span>You approve every page, lushoutdoors.com switches over, and Google is notified.</span></li>
+      <li><b>End of week 2 &middot; Review and launch</b><span>You approve every page, lushoutdoors.com switches over, and Google is notified.</span></li>
     </ol>
   </div>
 </section>
